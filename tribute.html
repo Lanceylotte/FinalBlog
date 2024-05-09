@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bobby Fisher</title>
+    <!-- Box-icon -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="tribute.css">
+    <style>
+        /* Hide the list initially */
+        .life-events {
+            display: none;
+        }
+        .hide-button {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navcontainer">
+        <img src="images/logo.png" alt="" class="fitBg">
+    </div>
+</header>
+
+<section class="home" id="home">
+    <div class="home-content">
+        <div class="home-text container">
+            <h2 class="home-title">Bobby Fisher De Goat</h2>
+            <br>
+            <span class="home-subtitle">This website talks about the life of the goat of chess.</span>
+        </div>
+        <div class="Follow">
+            <a href="#about" class="Follow" >Read more</a>
+        </div>
+    </div>
+</section>
+
+<section class="about container" id="about">
+    <div class="contentBx">
+        <h2 class="titleText">Robert (Bobby) James Fischer</h2>
+        <p class="title-text">
+            Bobby Fischer's dominance in the world of chess during his era was unparalleled, characterized by a remarkable combination of strategic brilliance and tactical precision. Rising to prominence in the midst of the Cold War, Fischer's victories on the chessboard mirrored the intense geopolitical rivalry between the United States and the Soviet Union. His triumphs in prestigious tournaments, including the Candidates matches and the World Chess Championship, shattered the Soviet hegemony that had long dominated the chess world. Fischer's strategic innovations and uncompromising style revolutionized the game, inspiring generations of chess enthusiasts worldwide. His legendary confrontations with renowned Soviet players such as Boris Spassky captivated audiences and elevated chess to unprecedented levels of popularity. Fischer's era marked a golden age in chess history, defined by his indomitable spirit and unparalleled mastery of the game.
+        </p>
+
+        <br>
+        <br>
+        <ul class="life-events">
+            <li><strong>1943:</strong> Robert James Fischer is born on March 9 in Chicago, Illinois, USA.</li>
+            <li><strong>1956:</strong> At the age of 13, Fischer wins the United States Junior Chess Championship, the first of many chess achievements.</li>
+            <li><strong>1958:</strong> Becomes the youngest ever Grandmaster at the age of 15, a record that stood until 1991.</li>
+            <li><strong>1962:</strong> Fischer wins the U.S. Championship for the first time, the beginning of his dominance in American chess.</li>
+            <li><strong>1970:</strong> Fischer wins the Interzonal Tournament, qualifying him for the Candidates matches.</li>
+            <li><strong>1971:</strong> Dominates the Candidates matches, defeating former World Champions Tigran Petrosian and Boris Spassky.</li>
+            <li><strong>1972:</strong> Plays Boris Spassky for the World Chess Championship in Reykjavik, Iceland, and becomes World Chess Champion, ending Soviet dominance in chess.</li>
+            <li><strong>1975:</strong> Due to disputes with FIDE (World Chess Federation), Fischer refuses to defend his title, and Anatoly Karpov becomes the new World Champion by default.</li>
+            <li><strong>1992:</strong> After 20 years of inactivity, Fischer plays a highly publicized rematch against Boris Spassky in Yugoslavia, violating U.S. sanctions and leading to legal troubles.</li>
+            <li><strong>2008:</strong> Bobby Fischer passes away on January 17 in Reykjavik, Iceland, at the age of 64.</li>
+        </ul>
+        <a href="#" class="btn2" onclick="toggleLifeEvents(event)">Read more</a>
+        <a href="#" class="hide-button" onclick="hideLifeEvents(event)">Hide</a>
+    </div>
+    <div class="imgBx">
+        <img src="images/bob.jpg" alt="" class="fitBg">
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="sec aboutus">
+            <h2>Follow us</h2>
+            <p>You can follow us on Facebook and TikTok. Just tap the icons below to stay connected. Feel free to message us with new content suggestions as well! <br> We're always open to hearing from you.</p>
+            <ul class="sci">
+                <li><a href="https://www.facebook.com/med.mabale"><i class="bx bxl-facebook"></i></a></li>
+                <li><a href="https://worldchesshof.org/hof-inductee/robert-bobby-james-fischer"><i class="bx bxl-tiktok"></i></a></li>
+            </ul>
+        </div>
+        <div class="sec quicklinks">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Read more</a></li>
+                <span>© 2024 World Chess Hall of Fame  <br> All Rights Reserved</span>
+            </ul>
+        </div>
+        <div class="sec contactBx">
+            <h2>Contact Info</h2>
+            <ul class="info">
+                <li>
+                    <span><i class='bx bxs-map'></i></span>
+                    <span>Purok 6, Pangasihan <br> Gingoog City <br> Philippines</span>
+                </li>
+                <li>
+                    <span><i class='bx bx-envelope' ></i></span>
+                    <p><a href="mailto:haicaronabe14@gmail.com">haicaronabe14@gmail.com</a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleLifeEvents(event) {
+        event.preventDefault();
+        var lifeEvents = document.querySelector('.life-events');
+        var btn2 = document.querySelector('.btn2');
+        var hideButton = document.querySelector('.hide-button');
+        lifeEvents.style.display = 'block';
+        btn2.style.display = 'none';
+        hideButton.style.display = 'block';
+    }
+
+    function hideLifeEvents(event) {
+        event.preventDefault();
+        var lifeEvents = document.querySelector('.life-events');
+        var btn2 = document.querySelector('.btn2');
+        var hideButton = document.querySelector('.hide-button');
+        lifeEvents.style.display = 'none';
+        btn2.style.display = 'block';
+        hideButton.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

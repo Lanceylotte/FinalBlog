@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+.star-rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-right: 200px; /* Adjust the margin as needed */
+}
+
+.star-rating .fas {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.star-rating .fas:hover,
+.star-rating .fas.checked {
+    color: #ffcc00;
+}
+
+
+body {
+            background-color: white; /* Set the background color of the body to white */
+        }
+
+.image-container img {
+            width: 500px; /* Adjust the width as needed */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Ensure the image is centered */
+            margin: 0 auto; /* Center the image horizontally */
+        }
+
+        .bottom-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .button {
+        position: absolute;
+        top: 20px; /* Adjust top position as needed */
+        left: 20px; /* Adjust left position as needed */
+    }
+
+    .button button {
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .button button:hover {
+        background-color: #45a049;
+    }
+
+    
+@media screen and (max-width: 768px) {
+    .star-rating {
+        margin-right: 0; /* Remove right margin on smaller screens */
+    }
+
+    .image-container img {
+        width: 100%; /* Make the image fill the container on smaller screens */
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+    }
+
+    .bottom-section {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start of the container */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .star-rating {
+        margin-right: 0; /* Remove right margin on smaller screens */
+    }
+
+    .image-container img {
+        width: 100%; /* Make the image fill the container on smaller screens */
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+    }
+
+    .bottom-section {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: flex-start; /* Align items to the start of the container */
+    }
+}
+
+
+
+
+    </style>
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Rate</title>
+</head>
+
+<body>
+    <div class="button">
+        <button onclick="goBack()">Back</button>
+    </div>
+    <div class="container">
+        <div class="bottom-section">
+            
+            <div class="image-container">
+                <img src="images/blog4.png" alt="Your Image">
+                <br>
+                <a href="https://youtu.be/2ywaDKi7QNQ?si=BoC05ML8iA2Y5T8i">Tap the link to play</a>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="head">
+            <h2>Post a Comment About This Blog</h2>
+        </div>
+        <div><span id="comment">0</span> Comments</div>
+        <div class="text">
+            <p>We are happy to hear from you</p>
+        </div>
+
+        <div class="comments"></div>
+        <div class="commentbox">
+            <img src="images/bobby-fischer.jpg" alt="">
+            <div class="content">
+                <h2>Comment as:</h2>
+                <input type="text" value="Anonymous" class="user">
+                <div class="commentinput">
+                    <input type="text" placeholder="Enter comment" class="usercomment">
+                    <br>
+                    <br>
+                    <div class="star-rating" id="starRating">
+                        <h3>Rate star:</h3>
+                        <i class="fas fa-star" data-rating="5"></i>
+                        <i class="fas fa-star" data-rating="4"></i>
+                        <i class="fas fa-star" data-rating="3"></i>
+                        <i class="fas fa-star" data-rating="2"></i>
+                        <i class="fas fa-star" data-rating="1"></i>
+                    </div>
+                    <br>
+                    <div class="buttons">
+                        <button type="submit" disabled id="publish">Publish</button>
+                        <div class="notify">
+                            <input type="checkbox" class="notifyinput"> <span>Notify me</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="policy">This site is protected by the Google <a href="">privacy policy</a> and <a href="">Terms of Service</a> apply.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        function goBack() {
+                window.history.back();
+        }
+
+
+        const USERID = {
+            name: null,
+            identity: null,
+            image: null,
+            message: null,
+            date: null
+        }
+
+        const userComment = document.querySelector(".usercomment");
+        const publishBtn = document.querySelector("#publish");
+        const comments = document.querySelector(".comments");
+        const userName = document.querySelector(".user");
+        const notify = document.querySelector(".notifyinput");
+
+        const stars = document.querySelectorAll('.fas');
+
+        stars.forEach((star, index) => {
+            star.addEventListener('click', () => {
+                USERID.rating = index + 1;
+                stars.forEach((s, idx) => {
+                    if (idx <= index) {
+                        s.classList.add('checked');
+                    } else {
+                        s.classList.remove('checked');
+                    }
+                });
+                checkPublishButton();
+            });
+        });
+
+        userComment.addEventListener("input", checkPublishButton);
+
+        function checkPublishButton() {
+            if (!userComment.value || !USERID.rating) {
+                publishBtn.setAttribute("disabled", "disabled");
+                publishBtn.classList.remove("abled");
+            } else {
+                publishBtn.removeAttribute("disabled");
+                publishBtn.classList.add("abled");
+            }
+        }
+
+        function addPost() {
+            if (!userComment.value || !USERID.rating) return;
+            USERID.name = userName.value;
+            if (USERID.name === "Anonymous") {
+                USERID.identity = false;
+                USERID.image = "images/anonymous.png"
+            } else {
+                USERID.identity = true;
+                USERID.image = "images/bobby-fischer.jpg"
+            }
+
+            USERID.message = userComment.value;
+            USERID.date = new Date().toLocaleString();
+            let published =
+                `<div class="parents">
+                <img src="${USERID.image}">
+                <div>
+                    <h1>${USERID.name}</h1>
+                    <p>${USERID.message}</p>
+                    <div class="comment-info">
+                        <div class="star-rating" id="commentStarRating">${generateStarRating(USERID.rating)}</div>
+                        <div class="engagements"><img src="images/like.png" id="like"><img src="images/share.png" alt=""></div>
+                    </div>
+                    <span class="date">${USERID.date}</span>
+                </div>    
+            </div>`
+
+            comments.innerHTML += published;
+            userComment.value = "";
+            publishBtn.classList.remove("abled");
+
+            let commentsNum = document.querySelectorAll(".parents").length;
+            document.getElementById("comment").textContent = commentsNum;
+
+            // Reset star ratings
+            USERID.rating = null;
+            stars.forEach(star => star.classList.remove('checked'));
+            checkPublishButton();
+        }
+
+        function generateStarRating(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= rating) {
+                    stars += '<i class="fas fa-star checked"></i>';
+                } else {
+                    stars += '<i class="fas fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        publishBtn.addEventListener("click", addPost);
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</body>
+</html>
